@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaStream } from "react-icons/fa";
 const StyledNavbar = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -9,7 +9,7 @@ const StyledNavbar = styled.nav`
   height: 60px;
   background-color: #00073d;
   color: #fff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 4px rgba(255, 255, 255, 0.5);
   z-index: 1;
   position: relative;
   top: 0;
@@ -25,11 +25,21 @@ function Navbar({ isOpen, setIsOpen }) {
       <StyledNavbar>
         <div className="top_section">
           <div className="bars">
-            <FaBars
-              onClick={() => {
-                toggleThis();
-              }}
-            />
+            {(!isOpen && (
+              <FaBars
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  toggleThis();
+                }}
+              />
+            )) || (
+              <FaStream
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  toggleThis();
+                }}
+              />
+            )}
           </div>
           <div>Logo</div>
         </div>

@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { BiAnalyse } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
+import { FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
+import { RiArrowLeftRightFill } from "react-icons/ri";
+import { GiFarmTractor, GiDrinkMe, GiSmokingVolcano } from "react-icons/gi";
+import { CgNotes } from "react-icons/cg";
+import { AiOutlineStock } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
-import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 
@@ -17,23 +16,8 @@ const routes = [
   },
   {
     path: "/users",
-    name: "Users",
-    icon: <FaUser />,
-  },
-  {
-    path: "/messages",
-    name: "Messages",
-    icon: <MdMessage />,
-  },
-  {
-    path: "/analytics",
-    name: "Analytics",
-    icon: <BiAnalyse />,
-  },
-  {
-    path: "/file-manager",
-    name: "File Manager",
-    icon: <AiTwotoneFileExclamation />,
+    name: "Trade",
+    icon: <RiArrowLeftRightFill />,
     subRoutes: [
       {
         path: "/settings/profile",
@@ -53,14 +37,29 @@ const routes = [
     ],
   },
   {
+    path: "/messages",
+    name: "Farm",
+    icon: <GiFarmTractor />,
+  },
+  {
+    path: "/analytics",
+    name: "Pools",
+    icon: <GiDrinkMe />,
+  },
+  {
+    path: "/file-manager",
+    name: "Vulcano Day",
+    icon: <GiSmokingVolcano />,
+  },
+  {
     path: "/order",
     name: "Order",
     icon: <BsCartCheck />,
   },
   {
     path: "/settings",
-    name: "Settings",
-    icon: <BiCog />,
+    name: "Listings",
+    icon: <AiOutlineStock />,
     exact: true,
     subRoutes: [
       {
@@ -82,8 +81,13 @@ const routes = [
   },
   {
     path: "/saved",
-    name: "Saved",
-    icon: <AiFillHeart />,
+    name: "Documentation",
+    icon: <CgNotes />,
+  },
+  {
+    path: "/saved",
+    name: "Documentation",
+    icon: <CgNotes />,
   },
 ];
 

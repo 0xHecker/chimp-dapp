@@ -21,7 +21,7 @@ function App() {
       <Router>
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen}>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard isOpen={isOpen} />} />
             <Route path="/users" element={<Users />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/analytics" element={<Analytics />} />
