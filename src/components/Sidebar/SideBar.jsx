@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
+import { FaHome, FaUser } from "react-icons/fa";
 import { RiArrowLeftRightFill } from "react-icons/ri";
 import { GiFarmTractor, GiDrinkMe, GiSmokingVolcano } from "react-icons/gi";
 import { CgNotes } from "react-icons/cg";
@@ -20,75 +20,66 @@ const routes = [
     icon: <RiArrowLeftRightFill />,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        link: "https://github.com",
+        name: "DEX ",
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
+        link: "https://github.com",
+        name: "CEX",
       },
       {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        link: "https://github.com",
+        name: "SpookySwap",
       },
     ],
   },
   {
-    path: "/messages",
+    path: "/farm",
     name: "Farm",
     icon: <GiFarmTractor />,
   },
   {
-    path: "/analytics",
+    path: "/pools",
     name: "Pools",
     icon: <GiDrinkMe />,
   },
   {
-    path: "/file-manager",
+    path: "/vulcano",
     name: "Vulcano Day",
     icon: <GiSmokingVolcano />,
   },
   {
-    path: "/order",
-    name: "Order",
+    path: "/dividends",
+    name: "Dividends",
     icon: <BsCartCheck />,
   },
   {
-    path: "/settings",
     name: "Listings",
     icon: <AiOutlineStock />,
     exact: true,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
+        link: "https://github.com",
+        name: "One ",
         icon: <FaUser />,
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
+        link: "https://github.com",
+        name: "Two ",
+        icon: <FaUser />,
       },
       {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        link: "https://github.com",
+        name: "Three",
+        icon: <FaUser />,
       },
     ],
   },
-  {
-    path: "/saved",
-    name: "Documentation",
-    icon: <CgNotes />,
-  },
-  {
-    path: "/saved",
-    name: "Documentation",
-    icon: <CgNotes />,
-  },
+  // {
+  //   path: "/saved",
+  //   name: "Documentation",
+  //   icon: <CgNotes />,
+  // },
 ];
 
 const SideBar = ({ children, isOpen, setIsOpen }) => {
@@ -125,6 +116,7 @@ const SideBar = ({ children, isOpen, setIsOpen }) => {
           className={`sidebar`}
         >
           <section className="routes">
+            {/* Map Subroutes and links conditionally*/}
             {routes.map((route, index) => {
               if (route.subRoutes) {
                 return (
@@ -162,10 +154,54 @@ const SideBar = ({ children, isOpen, setIsOpen }) => {
                 </NavLink>
               );
             })}
+            {/* Custom Links */}
+            <a href="https://github.com" target="_blank" rel="noreferrer">
+              <div className="link">
+                <div className="icon">
+                  <CgNotes />
+                </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      variants={showAnimation}
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      className="link_text"
+                    >
+                      Documentation
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </a>
+
+            <a href="https://github.com" target="_blank" rel="noreferrer">
+              <div className="link">
+                <div className="icon">
+                  <GiDrinkMe />
+                </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      variants={showAnimation}
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      className="link_text"
+                    >
+                      Hi there
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </a>
+            {/* Custom Links End */}
           </section>
         </motion.div>
-
-        <main>{children}</main>
+        <div className="children-container">
+          <main>{children}</main>
+        </div>
       </div>
     </>
   );
